@@ -1,5 +1,4 @@
 import time
-import math
 from datetime import datetime as dt
 
 hosts_path = r'C:\Windows\System32\drivers\etc\hosts'
@@ -10,8 +9,8 @@ seconds_of_work = 0
 while True:
     if dt(dt.now().year, dt.now().month, dt.now().day, 16) < dt.now() < dt(dt.now().year, dt.now().month, dt.now().day, 17):
         seconds = seconds_of_work % 60
-        minutes = math.floor(seconds_of_work / 60) % 60
-        hours = math.floor(seconds_of_work / 60 / 60) % 60
+        minutes = seconds_of_work // 60 % 60
+        hours = seconds_of_work // 60 // 60 % 60
         print('Working Hours: {}:{}:{}'.format(hours, minutes, seconds))
         with open(hosts_path, 'r+') as file:
             content = file.read()
