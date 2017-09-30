@@ -11,7 +11,8 @@ while True:
         seconds = seconds_of_work % 60
         minutes = seconds_of_work // 60 % 60
         hours = seconds_of_work // 60 // 60 % 60
-        print('Working Hours: {}:{}:{}'.format(hours, minutes, seconds))
+        print('Working Hours: {}:{}:{}'.format('0' + hours if hours < 10 else hours, '0' + minutes if minutes < 10 else minutes, '0' + seconds if seconds < 10 else seconds))
+        seconds_of_work += 1
         with open(hosts_path, 'r+') as file:
             content = file.read()
             for site in sites_to_kill:
@@ -28,5 +29,4 @@ while True:
                     file.write(line)
             file.truncate()
         print('Time to get some rest!')
-    seconds_of_work += 1
     time.sleep(1000)
