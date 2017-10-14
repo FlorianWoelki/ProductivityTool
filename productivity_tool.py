@@ -1,8 +1,12 @@
 import time
 import thread
 from datetime import datetime as dt
+from sys import platform
 
 hosts_path = r'C:\Windows\System32\drivers\etc\hosts'
+if platform == 'darwin' or platform == 'linux' or platform == 'linux2':
+    hosts_path = r'/etc/hosts'
+
 redirect = '127.0.0.1'
 sites_to_kill = ['www.facebook.com', 'facebook.com', 'www.gmail.com']
 
